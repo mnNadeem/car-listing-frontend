@@ -1,0 +1,100 @@
+/* Museo Sans Rounded Font Family */
+@font-face {
+  font-family: 'Museo Sans Rounded';
+  src: url('/fonts/MuseoSansRounded100.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded';
+  src: url('/fonts/MuseoSansRounded300.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded';
+  src: url('/fonts/MuseoSansRounded500.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded';
+  src: url('/fonts/MuseoSansRounded700.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded';
+  src: url('/fonts/MuseoSansRounded900.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans Rounded';
+  src: url('/fonts/MuseoSansRounded1000.otf') format('opentype');
+  font-weight: 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Variables for Font Family */
+:root {
+  --font-museo: 'Museo Sans Rounded', sans-serif;
+}
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-museo);
+}
+
+/* Font Weight Utility Classes */
+.font-museo {
+  font-family: var(--font-museo);
+}
+
+.font-thin {
+  font-family: var(--font-museo);
+  font-weight: 100;
+}
+
+.font-light {
+  font-family: var(--font-museo);
+  font-weight: 300;
+}
+
+.font-medium {
+  font-family: var(--font-museo);
+  font-weight: 500;
+}
+
+.font-bold {
+  font-family: var(--font-museo);
+  font-weight: 700;
+}
+
+.font-black {
+  font-family: var(--font-museo);
+  font-weight: 900;
+}
+
+.font-ultra {
+  font-family: var(--font-museo);
+  font-weight: 1000;
+}
