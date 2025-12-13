@@ -1,0 +1,20 @@
+.info-section {
+  border-bottom: none !important;
+  padding-bottom: 0;
+}
+
+.info-text {
+  font-size: 20px;
+  color: var(--color-secondary-text);
+  margin-bottom: 12px;
+}
+
+.info-link {
+  color: var(--color-primary-bg);
+  text-decoration: underline;
+}
+
+.info-link:hover {
+  text-decoration: none;
+}
+

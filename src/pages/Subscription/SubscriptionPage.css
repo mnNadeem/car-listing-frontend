@@ -1,0 +1,93 @@
+.subscription-page {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px 0px;
+  border: 1px solid var(--main-border-color);
+}
+
+.page-header {
+  border-bottom: 1px solid var(--main-border-color);
+  padding: 0px 40px;
+  padding-bottom: 20px;
+}
+
+.page-title {
+  font-size: 32px;
+  letter-spacing: -1px;
+  font-weight: 700;
+  color: var(--color-primary-text);
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: var(--color-secondary-text);
+}
+
+.section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.section {
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--color-secondary-text);
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .subscription-page {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+  .page-header {
+    padding-left: 16px;
+    padding-right: 16px;
+    /* padding-bottom: 20px; */
+    border-bottom: none;
+  }
+  .page-title {
+    font-size: 28px;
+  }
+  .page-subtitle,
+  .addon-name {
+    font-size: 18px;
+  }
+  .card-input-container {
+    width: 100%;
+  }
+  .section {
+    padding: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 20px;
+    /* border: none; */
+  }
+  .section-title .plan-name,
+  .price-value,
+  .section-title {
+    font-size: 20px;
+  }
+  /* .section.section.info-section {
+    padding-top: 20px;
+  } */
+  .animated-section {
+    /* border: none; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .section.info-section {
+    padding-top: 20px;
+  }
+  .info-text {
+    font-size: 16px;
+  }
+}

@@ -47,9 +47,21 @@
   font-display: swap;
 }
 
-/* CSS Variables for Font Family */
+/* CSS Variables */
 :root {
+  /* Font Family */
   --font-museo: 'Museo Sans Rounded', sans-serif;
+
+  /* Colors */
+  --color-primary-bg: #00a3ad;
+  --color-primary-text: #026786;
+  --color-primary-button: #ffcd05;
+  --color-secondary-text: #4a4a4a;
+  --color-secondary-text-light: #b2b2b2;
+  --main-border-color: #e6e6e6;
+  --coming-soon-badge-bg: #e8e8e8;
+  --coming-soon-badge-text-color: #7c7c7c;
+  --main-bg-card: #fcfcfc;
 }
 
 /* Base Reset */
@@ -97,4 +109,42 @@ body {
 .font-ultra {
   font-family: var(--font-museo);
   font-weight: 1000;
+}
+
+/* Background Color Utility Classes */
+.bg-primary {
+  background-color: var(--color-primary-bg);
+}
+
+.bg-primary-button {
+  background-color: var(--color-primary-button);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary-text);
+}
+
+.bg-secondary-light {
+  background-color: var(--color-secondary-text-light);
+}
+
+/* Text Color Utility Classes */
+.text-primary {
+  color: var(--color-primary-text);
+}
+
+.text-primary-bg {
+  color: var(--color-primary-bg);
+}
+
+.text-button {
+  color: var(--color-primary-button);
+}
+
+.text-secondary {
+  color: var(--color-secondary-text);
+}
+
+.text-secondary-light {
+  color: var(--color-secondary-text-light);
 }
