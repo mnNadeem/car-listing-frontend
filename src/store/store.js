@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import subscriptionReducer from './subscriptionSlice';
+import devicesReducer from './devicesSlice';
 
 export const store = configureStore({
   reducer: {
-    // Add your slices here
-    // example: exampleReducer,
+    subscription: subscriptionReducer,
+    devices: devicesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

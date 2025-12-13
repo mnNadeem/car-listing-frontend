@@ -1,4 +1,7 @@
+import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Layout } from './components/layout';
+import { SubscriptionPage, DevicesPage, EasyAccessPage } from './pages';
 
 function App() {
   return (
@@ -26,9 +29,13 @@ function App() {
         }}
       />
 
-      <div>
-        <h1>Hello World</h1>
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<SubscriptionPage />} />
+          <Route path="devices" element={<DevicesPage />} />
+          <Route path="easy-access" element={<EasyAccessPage />} />
+        </Route>
+      </Routes>
     </>
   );
 }

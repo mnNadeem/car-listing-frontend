@@ -1,27 +1,22 @@
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
+import subscriptionReducer from '../store/subscriptionSlice';
+import devicesReducer from '../store/devicesSlice';
 
-/**
- * Creates a test store with optional preloaded state
- * @param {Object} preloadedState - Initial state for the store
- * @returns {Object} Redux store
- */
+// Create a test store with optional preloaded state
 export function createTestStore(preloadedState = {}) {
   return configureStore({
     reducer: {
-      // Add your reducers here
+      subscription: subscriptionReducer,
+      devices: devicesReducer,
     },
     preloadedState,
   });
 }
 
-/**
- * Custom render function that wraps components with providers
- * @param {React.ReactElement} ui - Component to render
- * @param {Object} options - Render options
- * @returns {Object} Render result with store
- */
+// Custom render function that wraps components with providers
 export function renderWithProviders(
   ui,
   {
@@ -31,7 +26,11 @@ export function renderWithProviders(
   } = {}
 ) {
   function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Provider store={store}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </Provider>
+    );
   }
 
   return {
@@ -40,6 +39,6 @@ export function renderWithProviders(
   };
 }
 
+// Re-export everything from testing-library
 export * from '@testing-library/react';
-export { renderWithProviders as render };
-
+export { default as userEvent } from '@testing-library/user-event';

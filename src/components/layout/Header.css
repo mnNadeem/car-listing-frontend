@@ -1,0 +1,263 @@
+.header {
+  background-color: var(--color-primary-bg);
+  padding: 0 36px;
+  height: 73px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-logo img {
+  width: 150px;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 20px;
+  color: #fff;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.right-header-nav {
+  display: flex;
+  align-items: center;
+  height: auto;
+  gap: 35px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* .nav-link:hover {
+  opacity: 0.85;
+} */
+
+.user-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+}
+
+.user-avatar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-bg);
+}
+
+/* Mobile menu button - hidden on desktop */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.mobile-menu-btn svg {
+  width: 28px;
+  height: auto;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background-color: var(--color-primary-bg);
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: none;
+}
+
+.mobile-menu-overlay.open {
+  transform: translateX(0);
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu-logo img {
+  width: 120px;
+}
+
+.mobile-menu-close {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.mobile-menu-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 20px;
+}
+
+.mobile-nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: opacity 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+  opacity: 0.85;
+}
+
+/* Backdrop */
+.mobile-menu-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+}
+
+/* Mobile styles - less than 767px */
+@media (max-width: 767px) {
+  .header {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .header-container {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Show hamburger menu */
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    order: 1;
+  }
+
+  /* Center the logo */
+  .header-logo {
+    order: 2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header-logo img {
+    width: 130px;
+  }
+
+  /* Hide desktop nav links, show only avatar */
+  .right-header-nav {
+    order: 3;
+    gap: 0;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Show mobile menu overlay */
+  .mobile-menu-overlay {
+    display: block;
+  }
+
+  .mobile-menu-backdrop {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu-overlay.open + .mobile-menu-backdrop,
+  .mobile-menu-overlay.open ~ .mobile-menu-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

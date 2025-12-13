@@ -1,0 +1,25 @@
+.animated-section {
+  overflow: hidden;
+  border-bottom: 1px solid var(--main-border-color);
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animated-section-content {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.animated-section.show .animated-section-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.animated-section.hide .animated-section-content {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition-delay: 0s;
+}
