@@ -5,7 +5,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import subscriptionReducer from '../store/subscriptionSlice';
 import devicesReducer from '../store/devicesSlice';
 
-// Create a test store with optional preloaded state
 export function createTestStore(preloadedState = {}) {
   return configureStore({
     reducer: {
@@ -16,7 +15,6 @@ export function createTestStore(preloadedState = {}) {
   });
 }
 
-// Custom render function that wraps components with providers
 export function renderWithProviders(
   ui,
   {
@@ -39,6 +37,5 @@ export function renderWithProviders(
   };
 }
 
-// Re-export everything from testing-library
 export * from '@testing-library/react';
 export { default as userEvent } from '@testing-library/user-event';

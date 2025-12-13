@@ -44,7 +44,6 @@ describe('CardDetails', () => {
       const input = screen.getByPlaceholderText('1234 5678 1234 5678');
       fireEvent.change(input, { target: { value: '1234567812345678' } });
 
-      // Should be called with formatted value (spaces added)
       expect(onCardChange).toHaveBeenCalledWith('number', '1234 5678 1234 5678');
     });
 
@@ -55,7 +54,6 @@ describe('CardDetails', () => {
       const input = screen.getByPlaceholderText('1234 5678 1234 5678');
       fireEvent.change(input, { target: { value: '12ab34cd' } });
 
-      // Should only have digits in the formatted value
       expect(onCardChange).toHaveBeenCalled();
       const [, value] = onCardChange.mock.calls[0];
       expect(value.replace(/\s/g, '')).toMatch(/^\d+$/);
@@ -104,7 +102,6 @@ describe('CardDetails', () => {
       const input = screen.getByPlaceholderText('MM/YY');
       fireEvent.change(input, { target: { value: '15' } });
 
-      // Month 15 should be corrected to 12
       expect(onCardChange).toHaveBeenCalledWith('expiry', '12');
     });
 
@@ -115,7 +112,6 @@ describe('CardDetails', () => {
       const input = screen.getByPlaceholderText('MM/YY');
       fireEvent.change(input, { target: { value: '00' } });
 
-      // Month 00 should be corrected to 01
       expect(onCardChange).toHaveBeenCalledWith('expiry', '01');
     });
 

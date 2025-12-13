@@ -3,7 +3,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import DeviceCard from '../../pages/Devices/components/DeviceCard';
 
-// Mock the AnimatedSection component to simplify testing
 vi.mock('../../pages/Subscription/components/AnimatedSection', () => ({
   default: ({ show, children }) => (show ? <div data-testid="animated-section">{children}</div> : null),
 }));
@@ -175,10 +174,8 @@ describe('DeviceCard', () => {
       const fileInput = document.querySelector('input[type="file"]');
       expect(fileInput).toBeInTheDocument();
 
-      // Create a mock file
       const file = new File(['test'], 'test.png', { type: 'image/png' });
 
-      // Mock FileReader
       const mockFileReader = {
         readAsDataURL: vi.fn(),
         onloadend: null,
@@ -186,10 +183,8 @@ describe('DeviceCard', () => {
       };
       vi.spyOn(global, 'FileReader').mockImplementation(() => mockFileReader);
 
-      // Trigger file selection
       fireEvent.change(fileInput, { target: { files: [file] } });
 
-      // Trigger the onloadend callback
       mockFileReader.onloadend();
 
       await waitFor(() => {

@@ -21,7 +21,6 @@ function DeviceCard({
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Create a preview URL for the image
       const reader = new FileReader();
       reader.onloadend = () => {
         onImageChange(reader.result);

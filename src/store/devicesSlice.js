@@ -33,7 +33,6 @@ const initialDevices = [
   },
 ];
 
-// Load initial state from localStorage
 const loadFromStorage = () => {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -46,7 +45,6 @@ const loadFromStorage = () => {
   return null;
 };
 
-// Save state to localStorage
 const saveToStorage = (state) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -73,7 +71,6 @@ const devicesSlice = createSlice({
       const device = state.devices.find((d) => d.id === deviceId);
       if (device) {
         device.isOwn = isOwn;
-        // Clear serial and image when toggling off
         if (!isOwn) {
           device.serialNumber = '';
           device.image = null;
@@ -119,7 +116,6 @@ export const {
   resetDevices,
 } = devicesSlice.actions;
 
-// Selectors
 export const selectDevices = (state) => state.devices.devices;
 export const selectIsDevicesCompleted = (state) => state.devices.isCompleted;
 export const selectHasOwnDevice = (state) =>
