@@ -3,7 +3,6 @@ import { screen } from '@testing-library/react';
 import { renderWithProviders } from '../test-utils';
 import Footer from '../../components/layout/Footer';
 
-// Mock toast
 vi.mock('../../utils/toast', () => ({
   showError: vi.fn(),
   showSuccess: vi.fn(),
@@ -134,7 +133,7 @@ describe('Footer', () => {
         preloadedState: {
           subscription: {
             selectedPlan: 'just-mates',
-            selectedAddons: ['byo-gps'], // This addon requires card
+            selectedAddons: ['byo-gps'],
             cardDetails: { number: '', expiry: '', cvc: '' },
             isCompleted: false,
           },

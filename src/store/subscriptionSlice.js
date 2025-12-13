@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const STORAGE_KEY = 'subscription';
 
-// Load initial state from localStorage
 const loadFromStorage = () => {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -15,7 +14,6 @@ const loadFromStorage = () => {
   return null;
 };
 
-// Save state to localStorage
 const saveToStorage = (state) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -32,7 +30,7 @@ const defaultState = {
     expiry: '',
     cvc: '',
   },
-  isCompleted: false, // Flag to track if user clicked Next with valid data
+  isCompleted: false,
 };
 
 const storedState = loadFromStorage();
@@ -45,9 +43,7 @@ const subscriptionSlice = createSlice({
   reducers: {
     setSelectedPlan: (state, action) => {
       state.selectedPlan = action.payload;
-      // Clear addons when plan changes
       state.selectedAddons = [];
-      // Reset completion when plan changes
       state.isCompleted = false;
       saveToStorage(state);
     },
@@ -100,7 +96,6 @@ export const {
   resetSubscription,
 } = subscriptionSlice.actions;
 
-// Selectors
 export const selectSubscription = (state) => state.subscription;
 export const selectSelectedPlan = (state) => state.subscription.selectedPlan;
 export const selectSelectedAddons = (state) =>

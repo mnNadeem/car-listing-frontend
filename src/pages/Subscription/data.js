@@ -39,33 +39,29 @@ export const allAddons = [
     id: 'byo-gps',
     name: 'BYO secondary GPS - $5/month',
     available: true,
-    requiresCard: true, // Paid add-on requires card details
+    requiresCard: true,
   },
   {
     id: 'byo-lockbox',
     name: 'BYO lockbox - $10/month',
     available: true,
-    requiresCard: true, // Paid add-on requires card details
+    requiresCard: true,
   },
   {
     id: 'insurance',
     name: 'Between trip insurance',
     available: true,
     comingSoon: true,
-    requiresCard: false, // Coming soon, no card needed yet
+    requiresCard: false,
   },
 ];
 
-// Define which addons are visible for each plan
 export const addonsByPlan = {
   'just-mates': ['byo-gps'],
   'good-mates': ['byo-gps', 'byo-lockbox'],
   'best-mates': ['byo-gps', 'insurance'],
 };
 
-// Define which plans show card details
 export const plansWithCardDetails = ['good-mates', 'best-mates'];
 
-// Add-ons that require card details when selected
 export const addonsRequiringCard = ['byo-gps', 'byo-lockbox'];
-

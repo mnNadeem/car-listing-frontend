@@ -32,7 +32,6 @@ function AnimatedSection({ show, children }) {
   const paddingBottom = 20;
 
   useEffect(() => {
-    // Clear any existing timer
     if (timerRef.current) {
       clearTimeout(timerRef.current);
       timerRef.current = null;
@@ -40,7 +39,6 @@ function AnimatedSection({ show, children }) {
 
     if (show) {
       dispatch({ type: 'SHOW' });
-      // Use requestAnimationFrame to measure after render
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           if (contentRef.current) {
@@ -53,7 +51,6 @@ function AnimatedSection({ show, children }) {
       });
     } else {
       dispatch({ type: 'COLLAPSE' });
-      // Wait for animation to complete before hiding
       timerRef.current = setTimeout(() => {
         dispatch({ type: 'HIDE' });
       }, 350);
@@ -66,7 +63,6 @@ function AnimatedSection({ show, children }) {
     };
   }, [show]);
 
-  // Update height when children change
   useEffect(() => {
     if (show && state.shouldRender) {
       requestAnimationFrame(() => {

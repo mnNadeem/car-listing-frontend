@@ -24,7 +24,6 @@ function SubscriptionPage() {
   const selectedAddons = useAppSelector(selectSelectedAddons);
   const cardDetails = useAppSelector(selectCardDetails);
 
-  // Get visible addons based on selected plan
   const visibleAddons = useMemo(() => {
     if (!selectedPlan) {
       return [];
@@ -33,17 +32,14 @@ function SubscriptionPage() {
     return allAddons.filter((addon) => allowedAddonIds.includes(addon.id));
   }, [selectedPlan]);
 
-  // Check if any selected addon requires card details
   const addonRequiresCard = useMemo(() => {
     return selectedAddons.some((addonId) => addonsRequiringCard.includes(addonId));
   }, [selectedAddons]);
 
-  // Check if card details should be shown (plan requires it OR selected addon requires it)
   const showCardDetails = useMemo(() => {
     return plansWithCardDetails.includes(selectedPlan) || addonRequiresCard;
   }, [selectedPlan, addonRequiresCard]);
 
-  // Check if addons should be shown
   const showAddons = selectedPlan && visibleAddons.length > 0;
 
   const handlePlanSelect = (planId) => {

@@ -31,26 +31,21 @@ function Footer() {
   const isSubscriptionCompleted = useAppSelector(selectIsSubscriptionCompleted);
   const isDevicesCompleted = useAppSelector(selectIsDevicesCompleted);
 
-  // Check page types
   const isSubscriptionPage = location.pathname === '/';
   const isDevicesPage = location.pathname === '/devices';
   const isEasyAccessPage = location.pathname === '/easy-access';
 
-  // Check if any selected addon requires card details
   const addonRequiresCard = useMemo(() => {
     return selectedAddons.some((addonId) => addonsRequiringCard.includes(addonId));
   }, [selectedAddons]);
 
-  // Check if card details are required
   const requiresCard = useMemo(() => {
     return plansWithCardDetails.includes(selectedPlan) || addonRequiresCard;
   }, [selectedPlan, addonRequiresCard]);
 
-  // Validate card details
   const validateCardDetails = () => {
     const errors = [];
 
-    // Card number validation (should be 16 digits, displayed with spaces as "1234 5678 1234 5678")
     const cardNumber = cardDetails.number.replace(/\s/g, '');
     if (!cardNumber) {
       errors.push('Card number is required');
@@ -58,13 +53,11 @@ function Footer() {
       errors.push('Card number must be 16 digits');
     }
 
-    // Expiry validation (MM/YY format)
     if (!cardDetails.expiry) {
       errors.push('Expiry date is required');
     } else if (cardDetails.expiry.length !== 5) {
       errors.push('Expiry date must be in MM/YY format');
     } else {
-      // Check if expiry is in the past
       const [month, year] = cardDetails.expiry.split('/').map(Number);
       const now = new Date();
       const currentMonth = now.getMonth() + 1;
@@ -75,7 +68,6 @@ function Footer() {
       }
     }
 
-    // CVC validation (3 digits)
     if (!cardDetails.cvc) {
       errors.push('CVC is required');
     } else if (cardDetails.cvc.length !== 3) {
@@ -85,19 +77,15 @@ function Footer() {
     return errors;
   };
 
-  // Validate subscription form
   const validateSubscription = () => {
-    // Check if plan is selected
     if (!selectedPlan) {
       showError('Please select a subscription plan');
       return false;
     }
 
-    // If card details are required, validate them
     if (requiresCard) {
       const cardErrors = validateCardDetails();
       if (cardErrors.length > 0) {
-        // Show first error
         showError(cardErrors[0]);
         return false;
       }
@@ -106,15 +94,12 @@ function Footer() {
     return true;
   };
 
-  // Validate devices form
   const validateDevices = () => {
-    // Check if at least one device is marked as own
     if (!hasOwnDevice) {
       showError('Please enable at least one device you are bringing');
       return false;
     }
 
-    // Validate that all enabled devices have required fields
     const ownDevices = devices.filter((d) => d.isOwn);
     for (const device of ownDevices) {
       if (!device.serialNumber.trim()) {
@@ -130,13 +115,10 @@ function Footer() {
     return true;
   };
 
-  // Check if next button should be enabled
   const isNextEnabled = useMemo(() => {
     if (isSubscriptionPage) {
-      // Must have a plan selected
       if (!selectedPlan) return false;
 
-      // If card is required, check if all fields are filled
       if (requiresCard) {
         const cardNumber = cardDetails.number.replace(/\s/g, '');
         if (cardNumber.length !== 16) return false;
@@ -148,10 +130,8 @@ function Footer() {
     }
 
     if (isDevicesPage) {
-      // Must have at least one device enabled
       if (!hasOwnDevice) return false;
 
-      // All enabled devices must have serial number and image
       const ownDevices = devices.filter((d) => d.isOwn);
       for (const device of ownDevices) {
         if (!device.serialNumber.trim()) return false;
@@ -166,23 +146,18 @@ function Footer() {
 
   const handleNextClick = () => {
     if (isSubscriptionPage) {
-      // Validate subscription data
       if (validateSubscription()) {
-        // Mark subscription as completed and navigate to devices
         dispatch(setSubscriptionCompleted(true));
         navigate('/devices');
       }
     } else if (isDevicesPage) {
-      // Validate devices data
       if (validateDevices()) {
-        // Mark devices as completed and navigate to easy-access
         dispatch(setDevicesCompleted(true));
         navigate('/easy-access');
       }
     }
   };
 
-  // Hide footer on Easy Access page when both steps are completed
   if (isEasyAccessPage && isSubscriptionCompleted && isDevicesCompleted) {
     return null;
   }
@@ -205,4 +180,3 @@ function Footer() {
 }
 
 export default Footer;
-
